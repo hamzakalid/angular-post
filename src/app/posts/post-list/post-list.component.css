@@ -1,0 +1,25 @@
+.post-image{
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 7px;
+}
+.nolist{
+  padding: 0;
+  list-style-type: none;
+}
+ul >li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  list-style-type: none;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.post-card{
+  background-color: white;
+  border-radius: 7px;
+  border: 1px solid whitesmoke;
+}
