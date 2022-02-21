@@ -1,3 +1,5 @@
+
+//this file to create and intial the serever for node.js and express
 const app = require("./backend/app");
 const debug = require("debug")("node-angular");
 const http = require("http");
