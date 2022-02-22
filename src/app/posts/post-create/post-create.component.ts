@@ -29,6 +29,7 @@ export class PostCreateComponent  {
 
 
      const post:Post = {
+      _id:'',
       title : postForm.value.title,
       content:postForm.value.content,
       user: "hamza",

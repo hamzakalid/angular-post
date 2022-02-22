@@ -27,6 +27,7 @@
     "encodeurl": "^1.0.2",
     "express": "^4.17.3",
     "finalhandler": "^1.1.2",
+    "mongoose": "^6.2.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

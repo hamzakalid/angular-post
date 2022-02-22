@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { Subject } from "rxjs";
-
+import { map } from "rxjs/operators";
 import {Post} from "./post.module";
 
 
@@ -17,6 +17,7 @@ export class PostService{
 
   getPosts(){
     this.http.get<{message:string , posts:Post[]}>("http://localhost:3000/api/posts")
+
       .subscribe((res)=>{
           this.posts = res.posts;
           this.postUpdate.next([...this.posts]);
@@ -28,16 +29,27 @@ export class PostService{
   }
 
   addPost(title:string ,content:string){
-    const post: Post = {title:title,content:content,user:'hamza'};
-    this.http.post<{message:string}>("http://localhost:3000/api/post",post)
+    const post: Post = {_id:'',title:title,content:content,user:'hamza'};
+    this.http.post<{message:string,postId:string}>("http://localhost:3000/api/post",post)
     .subscribe((res)=>{
-      console.log(res.message);
 
+      post._id = res.postId;
       this.posts.push(post);
       this.postUpdate.next([...this.posts]);
     })
 
 
+  }
+
+
+  //This for delete the selected post
+  deletePost(postId:string){
+    this.http.delete('http://localhost:3000/api/post/'+postId)
+        .subscribe((res)=>{
+          const updatedPost = this.posts.filter(post=> post._id!==postId);
+          this.posts = updatedPost;
+          this.postUpdate.next([...this.posts]);
+        });
   }
 
 }

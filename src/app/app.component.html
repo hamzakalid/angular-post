@@ -1,12 +1,11 @@
 <mat-toolbar class="header">
   <span>My Application</span>
+  <nav>
+    <a mat-button routerLink="/create">New Post</a>
+    <a mat-button routerLink="/">Home</a>
+  </nav>
 </mat-toolbar>
 
 <div class="container">
-
-  <app-post-create ></app-post-create>
-
-  <div class="post-list">
-        <app-post-list ></app-post-list>
-  </div>
+    <router-outlet></router-outlet>
 </div>

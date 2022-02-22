@@ -1,27 +1,27 @@
-# App
+# Angular-post
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+this is a test project for learn Angular and NodeJs
 
-## Development server
+some packages I use 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. **body-parser**
 
-## Code scaffolding
+   *Body-parser is the Node.js body parsing middleware. It is responsible*
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   for parsing the incoming request bodies in a middleware before you handle it.
 
-## Build
+​		`$ npm install --save body-parser`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. **express**
 
-## Running unit tests
+   `$ npm install --save express`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **nodemon**
 
-## Running end-to-end tests
+​		`$ npm install --save-dev nodemon`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. **mongoose**
 
-## Further help
+​		`$ npm install mongoose --save`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+​	
