@@ -1,4 +1,8 @@
-<mat-card> Create New Post
+
+<mat-spinner *ngIf="isLoading"></mat-spinner  >
+
+
+<mat-card *ngIf="!isLoading"> Create New Post
     <br>
     <form #postForm = "ngForm" (submit)="onPost(postForm)" >
 
@@ -6,7 +10,7 @@
         <input
         type="text"
         matInput
-        ngModel
+        [ngModel]="post.title"
         placeholder="Write the title"
         name = "title"
         required
@@ -19,7 +23,7 @@
         <mat-label>What In Your Maind?</mat-label>
         <textarea
         rows="8"
-        ngModel
+        [ngModel]="post.content"
         name = "content"
         matInput
         required
@@ -31,7 +35,7 @@
       <button
       type ="submit"
       mat-flat-button
-      color="primary" >Post
+      color="primary" style="background:#00897b;" >Post
         <mat-icon aria-hidden="false" aria-label="Example  send  icon"> send </mat-icon>
       </button>
     </form>

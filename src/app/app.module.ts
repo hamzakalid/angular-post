@@ -12,11 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+import { AppRoutingModule } from './app-routing.module';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
-import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatToolbarModule,
     MatInputModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     MatSnackBarModule,
   ],
   providers: [],

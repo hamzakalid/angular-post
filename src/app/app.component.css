@@ -14,7 +14,10 @@
   margin-top: 20px;
 }
 
-.header{
-  background-color: #30959f;
-  color: #fff;
+.list-of-btns{
+  color: #555;
+}
+
+.list-of-btns a.active{
+  color: #00897b;
 }
