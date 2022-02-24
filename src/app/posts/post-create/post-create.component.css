@@ -8,5 +8,18 @@
 }
 .title{
   width: 100%;
-  background-color: ;
+}
+
+
+.image-piker {
+  margin: 10px 0;
+}
+
+.image-piker input[type='file']{
+  opacity: 0;
+}
+
+.image-piker .image-view img{
+  margin-top: 10px;
+  width: 400px;
 }

@@ -9,10 +9,10 @@
       <mat-card-title>{{post.title}}</mat-card-title>
       <mat-card-subtitle>{{post.user}}</mat-card-subtitle>
     </mat-card-header>
-    <div class="post-image">
-      <img mat-card-image src="https://miro.medium.com/max/1400/0*0pTmoggTq4asbb0g" alt="Photo of a Shiba Inu">
-    </div>
+
     <mat-card-content>
+      <div class="post-image" style="background-image:url('https://miro.medium.com/max/1400/0*0pTmoggTq4asbb0g')">
+      </div>
       <p>
         {{post.content}}
       </p>
@@ -24,8 +24,15 @@
   </mat-card>
 </li>
 
+
 </ul>
 
 <span class="placeholder" *ngIf="posts.length <=0 && !isLoading">
   No posts yet 😴
 </span>
+<mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              aria-label="Select page"
+              (page)="onPageChange($event)">
+</mat-paginator>

@@ -43,8 +43,10 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
   );
+  // res.setHeader("multipart/form-data")
   next();
 });
+
 
 app.use('/api/posts',postRouter);
 

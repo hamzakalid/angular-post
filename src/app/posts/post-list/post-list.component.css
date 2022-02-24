@@ -1,7 +1,13 @@
 .post-image{
-  max-height: 300px;
+  height: 200px;
   overflow: hidden;
   border-radius: 7px;
+  min-width: 200px;
+  background-size: cover;
+  background-position: center center;
+}
+mat-card-content{
+  display: flex;
 }
 .nolist{
   padding: 0;
@@ -39,4 +45,13 @@ mat-spinner {
   padding: 30px;
   font-weight: 800;
   color: #aaa;
+}
+
+mat-paginator{
+  margin:1rem 0;
+}
+
+mat-card-content p{
+  color: #222;
+  padding-left: 15px;
 }

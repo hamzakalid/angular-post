@@ -4,32 +4,35 @@
 
 <mat-card *ngIf="!isLoading"> Create New Post
     <br>
-    <form #postForm = "ngForm" (submit)="onPost(postForm)" >
+    <form [formGroup]="form" (submit)="onPost()" enctype="multipart/form-data" >
 
       <mat-form-field class="title" appearance="fill">
         <input
         type="text"
         matInput
-        [ngModel]="post.title"
         placeholder="Write the title"
-        name = "title"
-        required
-        maxlength="210"
-        #title = 'ngModel'
+        formControlName = "title"
         >
-        <mat-error *ngIf="title.invalid">Please Enter The Title</mat-error>
+        <mat-error *ngIf="form.get('title')?.invalid">Please Enter The Title</mat-error>
       </mat-form-field>
+
+      <div class="image-piker">
+        <button mat-stroked-button type="button" (click)="imagePiker.click()">Pick Image</button>
+        <input type="file" name="image" formControlName = "fileSource" #imagePiker  (change)="onImagePicked($event)" accept="image/*">
+        <div *ngIf="imageSrc" class="image-view">
+          <img [src]="imageSrc" [alt]="this.form.get('title')">
+        </div>
+      </div>
+
       <mat-form-field class="post-input" appearance="fill">
         <mat-label>What In Your Maind?</mat-label>
         <textarea
         rows="8"
-        [ngModel]="post.content"
-        name = "content"
+        formControlName = "content"
         matInput
-        required
         placeholder="type ..."
-        #content="ngModel"></textarea>
-        <mat-error *ngIf="content.invalid">Please Enter The Content</mat-error>
+        ></textarea>
+        <mat-error *ngIf="form.get('content')?.invalid">Please Enter The Content</mat-error>
       </mat-form-field>
 
       <button

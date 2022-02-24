@@ -1,5 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -15,10 +15,25 @@ export class PostCreateComponent implements OnInit{
 
   title = 'Create Post';
 
+  //Define the form object
+  form = new FormGroup({
+    title:new FormControl(null,{
+      validators:[
+        Validators.required,
+        Validators.minLength(10)
+      ]
+    }),
+    content:new FormControl(null,{
+      validators:[Validators.required]
+    }),
+    fileSource: new FormControl('', [Validators.required])
+
+  }) ;
+
   isLoading = false;
   postTitle ="";
   postContent = "";
-
+  imageSrc ="";
   //edit OR create
   private mode = 'create';
   private postId = '';
@@ -55,6 +70,7 @@ export class PostCreateComponent implements OnInit{
             user : ""+oldpost.user,
           }
 
+          this.form.setValue({'title': this.post.title,'content':this.post.content});
 
         }else{
           //If the Router was create router
@@ -68,38 +84,64 @@ export class PostCreateComponent implements OnInit{
 
 
 
-  onPost(postForm : NgForm){
-    if (postForm.invalid) {
+  onPost(){
+    if (this.form.invalid) {
       this._snackBar.open( "the Title and the content is required" , "done");
       return;
     }
 
     if(this.mode == 'create'){
-       const post:Post = {
-        _id:'',
-        title : postForm.value.title,
-        content:postForm.value.content,
-        user: "hamza",
-      };
-      this.postService.addPost(post.title,post.content)
+
+      const formData = new FormData;
+      formData.append('title',this.form.get('title')?.value);
+      formData.append('content',this.form.get('content')?.value );
+      formData.append('file', this.form.get('fileSource')?.value);
+
+      this.postService.addPost(this.form.value.title, this.form.value.content, this.form.value.image)
 
       this._snackBar.open( "Posted", "done");
 
-      postForm.resetForm();
+      this.form.reset();
+
+
     }else{
       const post:Post = {
         _id:'',
-        title : postForm.value.title,
-        content:postForm.value.content,
+        title : this.form.value.title,
+        content:this.form.value.content,
         user: "hamza",
       };
+
       this.postService.updatePost(this.post._id,post.title,post.content,post.user)
 
       this._snackBar.open( "Posted", "done");
 
-      postForm.resetForm();
+      this.form.reset();
+    }
+  }
+
+  //This function for upload files [image]
+  onImagePicked(event: any){
+    //reader => to read the uploaded file
+    const reader = new FileReader();
+    //check if there is file or note
+    if(event.target.files && event.target.files.length) {
+      //store the files in file array
+      const [file] = event.target.files;
+      //read the file
+      reader.readAsDataURL(file);
+      //after reading event
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;  //store the image soruce
+        //store the file in form
+        this.form.patchValue({
+          image: reader.result
+        })
+      }
     }
 
-
+    console.log(this.form)
   }
 }
+
+
