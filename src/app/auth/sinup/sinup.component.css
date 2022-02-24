@@ -1,0 +1,23 @@
+.continer {
+  text-align: center;
+}
+
+h1 {
+  color: #00897b;
+  font-weight: 700 !important;
+  margin-top: 41px !important;
+}
+
+form.example-form.ng-dirty.ng-touched.ng-valid {max-width: 500px;margin: auto;padding: 22px;}
+
+mat-form-field {
+  display: block !important;
+  margin-top: 10px;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+}
+
+

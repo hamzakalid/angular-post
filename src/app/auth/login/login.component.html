@@ -1,1 +1,45 @@
-<p>login works!</p>
+
+<div class="continer">
+
+  <h1>Login to your account</h1>
+
+  <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email"
+             placeholder="Ex. pat@example.com">
+      <mat-hint>email must be unqi</mat-hint>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password"
+             placeholder="Ex. pat2022">
+
+      <mat-error *ngIf="loginForm.get('password')?.invalid">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button style="width: 100%" color="primary" type="submit" > Login </button>
+
+  </form>
+  <span class="forget">
+    <a remmber  routerLink="/sin-up">remmber password </a>
+  </span>
+
+  <span class="sin-up">
+    I Don,t Have Account<a  routerLink="/sin-up"> sinup </a>
+  </span>
+
+</div>

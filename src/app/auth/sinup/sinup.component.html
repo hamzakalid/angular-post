@@ -1,1 +1,49 @@
-<p>sinup works!</p>
+
+<div class="continer">
+
+  <h1>Create New Account</h1>
+
+
+
+  <form class="example-form" [formGroup]="sinupForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input type="username" matInput formControlName="username"
+             placeholder="Ex. pat2022">
+
+      <mat-error *ngIf="sinupForm.get('username')?.hasError('username')">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email"
+             placeholder="Ex. pat@example.com">
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="sinupForm.get('email')?.hasError('email') && !sinupForm.get('email')?.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="sinupForm.get('email')?.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password"
+             placeholder="Ex. pat2022">
+
+      <mat-error *ngIf="sinupForm.get('password')?.invalid">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button style="width: 100%" color="primary" type="submit" > Create an account </button>
+
+  </form>
+
+</div>
