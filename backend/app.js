@@ -7,18 +7,20 @@ const express = require('express');
  -------------------------------------------------------------------------------*/
 const bodyParser = require("body-parser")
 
+console.log("Somthing");
 //define the mongoose
 
 const mongoose = require("mongoose");
 
 //define the post router
 const postRouter = require('./router/posts');
+const userRouter = require('./router/users');
 
 const app = express();
 
 //Connect to the mango database
 
-mongoose.connect("mongodb+srv://hamzakhaled:xTuenKxHuxK7S6q@cluster0.rrhas.mongodb.net/angularPost?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://hamzakhaled:xTuenKxHuxK7S6q@cluster0.rrhas.mongodb.net/angularPost?")
         .then(()=>{
           console.log("the database is connected :)")
         }).catch(()=>{
@@ -37,7 +39,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept ,Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -49,5 +51,6 @@ app.use((req, res, next) => {
 
 
 app.use('/api/posts',postRouter);
+app.use('/api/auth',userRouter);
 
 module.exports =app;

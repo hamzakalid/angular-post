@@ -10,13 +10,15 @@
       <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> Home
     </a>
 
-    <a mat-button routerLinkActive="active" routerLink="/create">
+    <a *ngIf="userIsAutheticated" mat-button routerLinkActive="active" routerLink="/create">
       <mat-icon aria-hidden="false" aria-label="Example post_add icon">post_add</mat-icon> add post
     </a>
 
-    <a mat-button routerLinkActive="active" routerLink="/log-in">login
+    <a *ngIf="!userIsAutheticated" mat-button routerLinkActive="active" routerLink="/log-in">login
     </a>
 
+    <button *ngIf="userIsAutheticated" mat-button (click)="onLogout()">logout
+    </button>
 
 
   </nav>

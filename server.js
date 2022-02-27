@@ -18,6 +18,7 @@ const normalizePort = val => {
   }
 
   return false;
+
 };
 
 const onError = error => {

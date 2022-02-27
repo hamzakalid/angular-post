@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 
+const uniqueValidateor = require("mongoose-unique-validator");
+
 //Create and schema [the Structure]
 const userSchema = mongoose.Schema({
   username : {
@@ -8,13 +10,17 @@ const userSchema = mongoose.Schema({
   },
   email : {
     type :String,
-    required : true
+    required : true,
+    unique : true
   },
   password : {
     type :String,
-    default : "default.jpg"
+    required : true,
+
   }
 })
+
+userSchema.plugin(uniqueValidateor)
 
 //Make this schema valid for other files
 module.exports = mongoose.model('User',userSchema);

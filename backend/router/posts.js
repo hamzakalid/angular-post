@@ -5,6 +5,8 @@ const multer  = require('multer');
 
 const post = require('../models/post');
 
+const auth = require("../middleware/auth.middleware");
+
 
 const router = express.Router();
 
@@ -73,7 +75,7 @@ router.get("",(req,res,next)=>{
 
 //Type Post
 //This middeleware for add new post
-router.post('', upload.single('image'),(req,res,next)=>{
+router.post('', auth ,upload.single('image'),(req,res,next)=>{
 
 
   console.log(req)
@@ -112,7 +114,7 @@ router.post('', upload.single('image'),(req,res,next)=>{
 
 //Type Delete
 //This middeleware for delete the selected post
-router.delete('/:id',(req,res,next)=>{
+router.delete('/:id', auth,(req,res,next)=>{
   count = Post.count();
   Post.deleteOne({_id: req.params.id}).then((result)=>{
 
@@ -128,7 +130,7 @@ router.delete('/:id',(req,res,next)=>{
 
 //Type Put
 //This middeleware for update the selected post
-router.put('/:id',(req,res,next)=>{
+router.put('/:id', auth,(req,res,next)=>{
 
   const post = new Post({
     _id: req.params.id,

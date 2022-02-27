@@ -18,8 +18,8 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button color="warn" (click)="onDeleted(post._id)">Delete</button>
-      <a [routerLink]="['/edit',post._id]" mat-button color="primary">edit</a>
+      <button *ngIf="userIsAutheticated" mat-button color="warn" (click)="onDeleted(post._id)">Delete</button>
+      <a *ngIf="userIsAutheticated"  [routerLink]="['/edit',post._id]" mat-button color="primary">edit</a>
     </mat-card-actions>
   </mat-card>
 </li>

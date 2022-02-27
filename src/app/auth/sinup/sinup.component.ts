@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 
+
+
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-sinup',
   templateUrl: './sinup.component.html',
@@ -28,12 +31,17 @@ export class SinupComponent implements OnInit {
 
   }) ;
 
-  constructor() { }
+  constructor(public authService :AuthService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit( ){
+    if(this.sinupForm.valid){
+      this.authService.creatUser(this.sinupForm.value.username,
+        this.sinupForm.value.email,
+        this.sinupForm.value.password);
+    }
 
   }
 }

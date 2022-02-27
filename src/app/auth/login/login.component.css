@@ -1,5 +1,12 @@
 .continer {
   text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  /* padding: 5; */
+  width: 100%;
 }
 
 h1 {
@@ -8,16 +15,11 @@ h1 {
   margin-top: 41px !important;
 }
 
-form.example-form.ng-dirty.ng-touched.ng-valid {max-width: 500px;margin: auto;padding: 22px;}
+form {padding: 22px;}
 
 mat-form-field {
   display: block !important;
   margin-top: 10px;
-}
-
-form {
-  max-width: 500px;
-  margin: auto;
 }
 
 
